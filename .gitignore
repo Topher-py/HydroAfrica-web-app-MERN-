@@ -1,0 +1,27 @@
+# Node modules (don't push huge dependencies)
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Environment variables (keep secrets safe)
+.env
+client/.env
+server/.env
+
+# Uploaded images or files
+uploads/
+
+# Build output
+dist/
+build/
+
+# IDE/editor settings
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
