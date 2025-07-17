@@ -27,7 +27,7 @@ Access to clean and safe water remains a major challenge in many African regions
 ### Backend:
 
 - **Node.js** + **Express.js** — REST API and server logic
-- **MongoDB Atlas** — Scalable NoSQL cloud database
+- **MongoDB Atlas** — Scalable NoSQL CLOUD database
 - **Mongoose** — ODM for MongoDB
 
 ### DevOps & Hosting:
