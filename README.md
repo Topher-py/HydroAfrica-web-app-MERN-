@@ -48,5 +48,5 @@ Access to clean and safe water remains a major challenge in many African regions
 
 ---
 
-🌐 Live Demo
+🌐 LIVE DEMO
 https://your-netlify-site.netlify.app
