@@ -8,7 +8,11 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const ngoRoutes = require('./routes/ngos');
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://hydroafrica.netlify.app', // ✅ your Netlify frontend domain
+  credentials: true
+}));
+
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/api/ngos', ngoRoutes);
