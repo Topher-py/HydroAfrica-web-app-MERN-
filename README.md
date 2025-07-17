@@ -44,7 +44,7 @@ Access to clean and safe water remains a major challenge in many African regions
 - 🗺️ View active reports on an interactive map
 - 🔐 NGO login & authentication
 - 🧾 Dashboard for managing report statuses
-- 🧒 Community photos showing impact after resolution
+- Community photos showing impact after resolution
 
 ---
 
