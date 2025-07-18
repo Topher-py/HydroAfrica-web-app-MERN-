@@ -35,7 +35,7 @@ const ReportForm = () => {
   }
 
   try {
-    await axios.post('http://localhost:5000/api/reports', formData, {
+    await axios.post('https://hydroafrica.onrender.com/api/reports', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
