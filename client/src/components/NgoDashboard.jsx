@@ -24,7 +24,7 @@ const NgoDashboard = () => {
   const handleStatusChange = async (id, newStatus) => {
     try {
       await axios.patch(
-        `http://localhost:5000/api/reports/${id}`,
+        `https://hydroafrica.onrender.com/api/reports/${id}`,
         { status: newStatus },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -42,7 +42,7 @@ const NgoDashboard = () => {
   const handleVerify = async (id) => {
     try {
       await axios.patch(
-        `http://localhost:5000/api/reports/${id}/verify`,
+        `https://hydroafrica.onrender.com/api/reports/${id}`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -86,7 +86,7 @@ const NgoDashboard = () => {
 
           {report.image && (
             <img
-              src={`http://localhost:5000${report.image}`}
+              src={report.image}
               alt="report"
               className="w-48 h-auto mt-2 rounded"
             />
