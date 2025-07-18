@@ -7,16 +7,6 @@ const auth = require('../middleware/auth');
 const { storage } = require('../utils/cloudinary'); // ← Cloudinary config
 const upload = multer({ storage });
 
-// Set up Multer storage engine
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads/'); // make sure this folder exists
-  },
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    cb(null, uniqueSuffix + path.extname(file.originalname));
-  }
-});
 
 
 // POST: Submit a report
