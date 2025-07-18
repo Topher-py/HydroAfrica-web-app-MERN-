@@ -15,7 +15,7 @@ const NgoLogin = ({ onLogin }) => {
     e.preventDefault();
     setError('');
     try {
-      const res = await axios.post('https://hydroafrica.onrender.com/api/reports', form);
+      const res = await axios.post('https://hydroafrica.onrender.com/api/ngos/login', form);
       localStorage.setItem('ngoToken', res.data.token);
       onLogin(res.data.ngo); // parent callback
       navigate('/'); // ✅ redirect to homepage
