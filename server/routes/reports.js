@@ -28,16 +28,14 @@ router.post('/', upload.single('photo'), async (req, res) => {
       return res.status(400).json({ message: 'Missing description or location' });
     }
 
-    const parsedLocation = JSON.parse(location); // 👈 fix here
+    const parsedLocation = JSON.parse(location);
 
     const newReport = new Report({
-     description,
-     location: parsedLocation,
-     image: req.file ? `/uploads/${req.file.filename}` : null,
-     status: status || 'new' // ✅ Use provided status or default to 'new'
-   });
-
-
+      description,
+      location: parsedLocation,
+      image: req.file?.path || null, // ✅ Cloudinary URL
+      status: status || 'new'
+    });
 
     const saved = await newReport.save();
     res.status(201).json(saved);
@@ -46,6 +44,7 @@ router.post('/', upload.single('photo'), async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 });
+
 
 // Get all reports
 router.get('/', async (req, res) => {
@@ -103,22 +102,5 @@ router.patch('/:id/verify', auth, async (req, res) => {
   }
 });
 
-router.post('/', upload.single('photo'), async (req, res) => {
-  try {
-    const { description, location } = req.body;
-
-    const report = new Report({
-      description,
-      location: JSON.parse(location),
-      photoUrl: req.file?.path // ← Cloudinary returns `path` (a URL)
-    });
-
-    await report.save();
-    res.status(201).json({ message: '✅ Report created', report });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: '❌ Error submitting report' });
-  }
-});
 
 module.exports = router;

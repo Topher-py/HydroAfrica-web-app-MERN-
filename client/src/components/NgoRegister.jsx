@@ -14,7 +14,7 @@ const NgoRegister = () => {
     e.preventDefault();
     setError('');
     try {
-      await axios.post('http://localhost:5000/api/ngos/register', form);
+      await axios.post('https://hydroafrica.onrender.com/api/reports', form);
       setSuccess(true);
       setForm({ name: '', email: '', password: '', organization: '' });
     } catch (err) {

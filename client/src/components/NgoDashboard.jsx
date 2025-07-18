@@ -11,7 +11,7 @@ const NgoDashboard = () => {
   useEffect(() => {
     const fetchReports = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/reports');
+        const res = await axios.get('https://hydroafrica.onrender.com/api/reports');
         setReports(res.data);
         setLoading(false);
       } catch (err) {

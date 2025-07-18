@@ -44,7 +44,7 @@ const MapView = () => {
       }
     );
     // Fetch reports
-    axios.get('http://localhost:5000/api/reports')
+    axios.get('https://hydroafrica.onrender.com/api/reports')
       .then((res) => setReports(res.data))
       .catch((err) => console.error("❌ Failed to fetch reports:", err));
   }, []);
@@ -95,14 +95,14 @@ const MapView = () => {
             ]}
             icon={getStatusIcon(report.status)}
           >
-            console.log('Report Status:', report.status);
+          
 
             <Popup>
               <div className="text-sm">
                 <p className="font-semibold">{report.description}</p>
                 {report.image && (
                   <img
-                    src={`http://localhost:5000${report.image}`}
+                    src={report.image}
                     alt="Report"
                     style={{
                       width: '150px',
