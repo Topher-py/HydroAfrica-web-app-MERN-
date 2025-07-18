@@ -8,12 +8,6 @@ const fs = require('fs');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// ✅ Create uploads folder before using it
-const uploadDir = path.join(__dirname, 'uploads');
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir);
-  console.log('📁 uploads directory created');
-}
 
 // Middleware
 app.use(cors({
@@ -21,7 +15,6 @@ app.use(cors({
   credentials: true
 }));
 app.use(express.json());
-app.use('/uploads', express.static(uploadDir));
 
 // Routes
 const ngoRoutes = require('./routes/ngos');

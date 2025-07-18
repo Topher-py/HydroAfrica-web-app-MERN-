@@ -23,7 +23,7 @@ router.post('/', upload.single('photo'), async (req, res) => {
     const newReport = new Report({
       description,
       location: parsedLocation,
-      image: req.file?.path || null, // ✅ Cloudinary URL
+      image: req.file?.path || req.file?.secure_url || null, // ✅ Cloudinary URL
       status: status || 'new'
     });
 
