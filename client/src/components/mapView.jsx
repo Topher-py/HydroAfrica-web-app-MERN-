@@ -16,7 +16,7 @@ const getStatusIcon = (status) => {
 
   return new L.Icon({
     iconUrl,
-    shadowUrl: '/icons/marker-shadow.png', // also place this in public/icons/
+    shadowUrl: '/icons/marker-shadow.png', 
     iconSize: [25, 41],
     iconAnchor: [12, 41],
     popupAnchor: [1, -34],
@@ -24,6 +24,13 @@ const getStatusIcon = (status) => {
   });
 };
 
+const userIcon = new L.Icon({
+  iconUrl: '/icons/marker-icon-blue.png',
+  iconSize: [30, 40],
+  iconAnchor: [15, 40],
+  popupAnchor: [0, -30], 
+  shadowSize: [41, 41],
+});
 
 
 const MapView = () => {
@@ -83,7 +90,7 @@ const MapView = () => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; OpenStreetMap contributors'
         />
-        <Marker position={position}>
+        <Marker position={position} icon={userIcon}>
           <Popup>You are here</Popup>
         </Marker>
         {filteredReports.map((report, idx) => (
