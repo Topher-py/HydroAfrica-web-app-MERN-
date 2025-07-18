@@ -4,6 +4,8 @@ const multer = require('multer');
 const path = require('path');
 const Report = require('../models/Report');
 const auth = require('../middleware/auth');
+const { storage } = require('../utils/cloudinary'); // ← Cloudinary config
+const upload = multer({ storage });
 
 // Set up Multer storage engine
 const storage = multer.diskStorage({
@@ -16,8 +18,6 @@ const storage = multer.diskStorage({
   }
 });
 
-// Init upload middleware
-const upload = multer({ storage });
 
 // POST: Submit a report
 router.post('/', upload.single('photo'), async (req, res) => {
@@ -103,5 +103,22 @@ router.patch('/:id/verify', auth, async (req, res) => {
   }
 });
 
+router.post('/', upload.single('photo'), async (req, res) => {
+  try {
+    const { description, location } = req.body;
+
+    const report = new Report({
+      description,
+      location: JSON.parse(location),
+      photoUrl: req.file?.path // ← Cloudinary returns `path` (a URL)
+    });
+
+    await report.save();
+    res.status(201).json({ message: '✅ Report created', report });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: '❌ Error submitting report' });
+  }
+});
 
 module.exports = router;
